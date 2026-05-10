@@ -1,4 +1,4 @@
-# CustomerNewTicket — FreeScout Module
+# Customer New Ticket — FreeScout Module
 
 When raising a ticket for an existing customer in FreeScout, agents normally have to navigate to the new ticket form and then manually copy, paste, or retype the customer's email address. This module removes that friction by adding a **New Ticket** button directly to the customer's profile page. Clicking it opens the ticket creation form with the customer's email address already filled in, so agents can get straight to writing the message.
 
