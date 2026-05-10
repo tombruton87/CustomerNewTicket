@@ -1,6 +1,8 @@
 # CustomerNewTicket — FreeScout Module
 
-Adds a **New Ticket** button directly to customer profile pages in FreeScout. When clicked it opens the ticket creation form with the customer's email address pre-filled. If the agent has access to more than one mailbox a dropdown lets them pick which mailbox to use.
+When raising a ticket for an existing customer in FreeScout, agents normally have to navigate to the new ticket form and then manually copy, paste, or retype the customer's email address. This module removes that friction by adding a **New Ticket** button directly to the customer's profile page. Clicking it opens the ticket creation form with the customer's email address already filled in, so agents can get straight to writing the message.
+
+If the agent has access to more than one mailbox, a dropdown lets them pick which mailbox to use first.
 
 ## Features
 
@@ -23,6 +25,10 @@ Adds a **New Ticket** button directly to customer profile pages in FreeScout. Wh
    ```
 
 2. In FreeScout go to **Admin → Modules** and activate **Customer New Ticket**.
+
+## Screenshot
+
+![New Ticket button on customer profile](https://github.com/user-attachments/assets/f1dab5d0-24c2-46e5-a1b5-2ec967e9fbe2)
 
 ## Usage
 
