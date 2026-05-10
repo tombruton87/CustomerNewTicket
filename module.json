@@ -2,7 +2,7 @@
     "name": "Customer New Ticket",
     "alias": "customernewticket",
     "description": "Adds a New Ticket button on customer profiles, pre-filled with the customer's email and filtered to the user's accessible mailboxes.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Hamlet Digital",
     "authorUrl": "https://hamlet-digital.co.uk",
     "requiredAppVersion": "1.8.181",

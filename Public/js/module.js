@@ -11,10 +11,13 @@ function cntBuildUrl(base, email) {
 }
 
 function cntInitProfileButton() {
-    if (typeof cntMailboxes === 'undefined' || !cntMailboxes.length) return;
+    var cnt = window.CustomerNewTicket;
+    if (!cnt || !cnt.mailboxes || !cnt.mailboxes.length) return;
 
     $(function () {
-        var email = (typeof cntCustomerEmail !== 'undefined') ? cntCustomerEmail : '';
+        var email     = cnt.email || '';
+        var label     = cnt.label || 'New Ticket';
+        var mailboxes = cnt.mailboxes;
 
         // Inject inside .customer-profile-menu, before the cog toggle.
         // This keeps our icon in the same positioned container so vertical
@@ -24,12 +27,12 @@ function cntInitProfileButton() {
 
         var $el;
 
-        if (cntMailboxes.length === 1) {
-            var url = cntBuildUrl(cntMailboxes[0].url, email);
+        if (mailboxes.length === 1) {
+            var url = cntBuildUrl(mailboxes[0].url, email);
             $el = $('<a>')
                 .addClass('glyphicon glyphicon-envelope link-grey cnt-envelope-btn')
                 .attr('href', url)
-                .attr('title', cntLabelNewTicket)
+                .attr('title', label)
                 .on('click', function (e) {
                     e.preventDefault();
                     window.top.location.href = url;
@@ -39,10 +42,10 @@ function cntInitProfileButton() {
                 .addClass('glyphicon glyphicon-envelope link-grey dropdown-toggle cnt-envelope-btn')
                 .attr('href', '#')
                 .attr('data-toggle', 'dropdown')
-                .attr('title', cntLabelNewTicket);
+                .attr('title', label);
 
             var $ul = $('<ul>').addClass('dropdown-menu dropdown-menu-right');
-            $.each(cntMailboxes, function (i, mb) {
+            $.each(mailboxes, function (i, mb) {
                 var mbUrl = cntBuildUrl(mb.url, email);
                 $('<li>').append(
                     $('<a>').attr('href', mbUrl).text(mb.name)

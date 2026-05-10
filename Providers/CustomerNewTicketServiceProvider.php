@@ -38,15 +38,9 @@ class CustomerNewTicketServiceProvider extends ServiceProvider
         }, 5, 1);
 
         // Inject envelope button on customer profile pages.
-        // Also runs on plugin-provided tabs that reuse the core customer profile
-        // layout — e.g. StoklySync's stoklysync/{id}/stokly and .../orders routes.
-        // If those plugins aren't installed, the Route::is calls simply return
-        // false and nothing changes.
         \Eventy::addAction('javascript', function () {
             $on_profile = \Route::is('customers.update')
-                || \Route::is('customers.conversations')
-                || \Route::is('stoklysync.customer.stokly')
-                || \Route::is('stoklysync.customer.orders');
+                || \Route::is('customers.conversations');
 
             if ($on_profile) {
                 $customer_id = (int)(
@@ -62,7 +56,9 @@ class CustomerNewTicketServiceProvider extends ServiceProvider
                         if ($customer) {
                             $customer_email = $customer->getMainEmail() ?? '';
                         }
-                    } catch (\Exception $e) {}
+                    } catch (\Exception $e) {
+                        \Log::warning('CustomerNewTicket: failed to load customer email', ['error' => $e->getMessage()]);
+                    }
                 }
 
                 $mailboxes = [];
@@ -77,11 +73,15 @@ class CustomerNewTicketServiceProvider extends ServiceProvider
                             ];
                         }
                     }
-                } catch (\Exception $e) {}
+                } catch (\Exception $e) {
+                    \Log::warning('CustomerNewTicket: failed to load mailboxes', ['error' => $e->getMessage()]);
+                }
 
-                echo 'var cntMailboxes     = ' . json_encode($mailboxes) . ';' . "\n";
-                echo 'var cntCustomerEmail = ' . json_encode($customer_email) . ';' . "\n";
-                echo 'var cntLabelNewTicket = ' . json_encode(__('New Ticket')) . ';' . "\n";
+                echo 'window.CustomerNewTicket = ' . json_encode([
+                    'mailboxes' => $mailboxes,
+                    'email'     => $customer_email,
+                    'label'     => __('New Ticket'),
+                ]) . ';' . "\n";
                 echo 'cntInitProfileButton();' . "\n";
             }
 
