@@ -1,0 +1,22 @@
+{
+    "name": "Customer New Ticket",
+    "alias": "customernewticket",
+    "description": "Adds a New Ticket button on customer profiles, pre-filled with the customer's email and filtered to the user's accessible mailboxes.",
+    "version": "1.0.0",
+    "author": "Hamlet Digital",
+    "authorUrl": "https://hamlet-digital.co.uk",
+    "requiredAppVersion": "1.8.181",
+    "license": "AGPL-3.0-or-later",
+    "keywords": [],
+    "img": "/modules/customernewticket/img/logo.png",
+    "active": 0,
+    "order": 0,
+    "providers": [
+        "Modules\\CustomerNewTicket\\Providers\\CustomerNewTicketServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": ["crm"]
+}

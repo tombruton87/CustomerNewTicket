@@ -1,0 +1,10 @@
+{
+    "name": "custom/customernewticket",
+    "description": "Customer New Ticket button for FreeScout",
+    "autoload": {
+        "psr-4": {
+            "Modules\\CustomerNewTicket\\": ""
+        }
+    },
+    "require": {}
+}

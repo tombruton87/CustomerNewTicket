@@ -1,0 +1,14 @@
+/* CustomerNewTicket – envelope button inside the cog container */
+
+.cnt-envelope-btn {
+    margin-right: 4px;
+}
+
+.cnt-envelope-wrapper {
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.cnt-envelope-wrapper .dropdown-toggle {
+    text-decoration: none !important;
+}
